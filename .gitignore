@@ -12,3 +12,5 @@
 *.tar
 *.zip
 
+# Exclude unnecesary/large datafiles
+data/06_fAstCal1.2/
