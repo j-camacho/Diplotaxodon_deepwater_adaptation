@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#SBATCH --job-name=[NAME]                 # Modify parameters to fit resources
+#SBATCH --ntasks=1 --cpus-per-task=4
+#SBATCH --ntasks-per-node=[]
+#SBATCH --mem-per-cpu=[]
+#SBATCH --time=[]]
+#SBATCH --partition=[PARTITION]
+#SBATCH --array=1-22
+#SBATCH --error=rehh_xpehh_%A_%a.err
+#SBATCH --output=rehh_xpehh_%A_%a.out
+
+# Here, using conda environment. Modify according to own set up.
+#source [PATH_TO_CONDA_SETUP]
+#conda activate [CONDA_ENV]   
+
+# load modules if conda env misses anything
+#module load R/4.0.2-intel-2020a
+
+###############################################
+# Define variables
+pop1='dlimno'
+pop2='dbigeye'
+outdir=path_to_output_directory
+chromlist=(chr{1..22} chrX)
+chrom=${chromlist[$SLURM_ARRAY_TASK_ID-1]}
+
+if [ "$chrom" == "chr21" ]
+then
+echo "Chromosome 21 is excluded"
+exit 0
+fi
+
+hap_fn1="GWAS1465.no_if.sf_stringent1.pass.snps.biallelic.phased.${chrom}.${pop1}_rehh.vcf.gz"
+hap_fn2="GWAS1465.no_if.sf_stringent1.pass.snps.biallelic.phased.${chrom}.${pop2}_rehh.vcf.gz"
+
+# Run script
+echo Start job $chrom
+
+Rscript path_to_script/05_rehh_xpehh_slurm.R $pop1 $pop2 $outdir $chrom $hap_fn1 $hap_fn2   
+
+echo End Job

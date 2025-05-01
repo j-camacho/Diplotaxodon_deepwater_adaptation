@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#SBATCH --job-name=[JOB_NAME]
+#SBATCH --partition=[PARTITION]
+#SBATCH --array=1-22           
+#SBATCH --output=%j_%A_%a.out     
+#SBATCH --error=%j_%A_%a.err      
+#SBATCH --time=1:00:00
+#SBATCH --mem=6G
+#SBATCH --export=ALL
+
+# Set input and output directories
+input_dir=path_to_dir/raw_data/      # This contains the raw RNAseq reads (fastq) which can be retrieved from XXX.
+output_dir=path_to_dir/fastqc/
+
+# Change the working directory to the input directory
+cd $input_dir
+
+# Load any required modules (e.g., fastqc)
+# module load fastqc/0.11.3
+
+# Create an array of input files that match the 'fq.gz' pattern in the current directory
+input_files=(*.fq.gz)
+
+# Run FASTQC in parallel for all files
+fastqc -o $output_dir -t 22 ${input_files[$SLURM_ARRAY_TASK_ID]}

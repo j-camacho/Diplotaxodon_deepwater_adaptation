@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#SBATCH --job-name=[JOB_NAME]
+#SBATCH --partition=[PARTITION]
+#SBATCH --time=[TIME]
+#SBATCH --mem=[MEMORY] 
+#SBATCH --output=%j_%A_%a.out     
+#SBATCH --error= %j_%A_%a.err 
+
+cd path_to_dir/STAR   
+
+module load STAR/2.7.10b-GCC-11.3.0
+
+
+STAR --runThreadN 6 \
+--runMode genomeGenerate \
+--genomeDir genome_index \
+--genomeFastaFiles 06_fAstCal1.2/GCF_900246225.1_fAstCal1.2_genomic.fna \
+--sjdbGTFfile 06_fAstCal1.2/genomic.gtf \
+--sjdbOverhang 149

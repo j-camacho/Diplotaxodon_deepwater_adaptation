@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#SBATCH --job-name=[JOB_NAME]
+#SBATCH --partition=[PARTITION]
+#SBATCH --time=[TIME] 
+#SBATCH --mem=[MEMORY] 
+#SBATCH --array=1-11
+
+cd path_to_dir/HTSeq
+
+GTF=../STAR/06_fAstCal1.2/genomic.gtf
+BAM_DIR=../STAR/alignment        # Directory containing the alignment files (BAM) generated using "06_rnaseq_3_STAR_alignment"
+
+# Create an array of input files for all BAM files 
+input_files=("$BAM_DIR"/*Aligned.sortedByCoord.out.bam)
+
+# Get basename of samples
+input_file="${input_files[$SLURM_ARRAY_TASK_ID-1]}"
+sample_name=$(basename "$input_file" Aligned.sortedByCoord.out.bam)
+
+#SBATCH --output=${sample_name}-%A_%a.out
+#SBATCH --error=${sample_name}-%A_%a.err 
+
+samtools index -b "$BAM_DIR"/${sample_name}Aligned.sortedByCoord.out.bam
+
+htseq-count -f bam \
+-r pos \
+-s no \
+-t CDS \
+-i gene_id \
+"$BAM_DIR"/${sample_name}Aligned.sortedByCoord.out.bam $GTF > ${sample_name}Aligned.sortedByCoord.stranded.out.count.txt_tmp
+
+# Get count summary
+tail -5 ${sample_name}Aligned.sortedByCoord.stranded.out.count.txt_tmp > ${sample_name}Aligned.sortedByCoord.stranded.out.count.txt_summary
+# Get count table without the summary, removing first line (header)
+head -n -5 ${sample_name}Aligned.sortedByCoord.stranded.out.count.txt_tmp > ${sample_name}Aligned.sortedByCoord.stranded.out.count.txt
+# delete tmp file
+rm ${sample_name}Aligned.sortedByCoord.stranded.out.count.txt_tmp 

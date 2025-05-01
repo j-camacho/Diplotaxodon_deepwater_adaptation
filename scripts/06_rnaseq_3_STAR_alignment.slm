@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#SBATCH --job-name=[JOB_NAME]
+#SBATCH --partition=[PARTITION]
+#SBATCH --time=[TIME] 
+#SBATCH --mem=[MEMORY] 
+#SBATCH --array=1-11
+#SBATCH --output==%j_%A_%a.out  
+#SBATCH --error==%j_%A_%a.err 
+
+cd path_to_dir/STAR/
+
+# Define path to input and output files relative to the STAR working dir
+genome_dir=genome_index         # Directory containing the genome index generated using "06_rnaseq_2_STAR_genome_index" (--genomeDir genome_index)
+raw_data_dir=../raw_data        # Raw data: fastq files
+alignment_out_dir=alignment     # Output directory to contain the alignment files
+
+# Create an array of input files for all fastq files - two strands
+input_files_1=("$raw_data_dir"/*_1.fq.gz)
+
+# Get basename of samples
+input_file_1="${input_files_1[$SLURM_ARRAY_TASK_ID-1]}"
+sample_name=$(basename "$input_file_1" _1.fq.gz)
+
+
+module load STAR/2.7.10b-GCC-11.3.0
+
+STAR --runThreadN 20 \
+--genomeDir $genome_dir \
+--readFilesIn $raw_data_dir/${sample_name}_1.fq.gz $raw_data_dir/${sample_name}_2.fq.gz \
+--readFilesCommand zcat \
+--outFileNamePrefix ${alignment_out_dir}/${sample_name} \
+--outSAMtype BAM SortedByCoordinate \
+--outSAMunmapped Within \
+--quantMode GeneCounts \          # Gene counts outputted by STAR, not used in this study.
+--outSAMattributes Standard 
