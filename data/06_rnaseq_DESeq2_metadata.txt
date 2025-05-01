@@ -1,0 +1,12 @@
+	species	group
+D33I06	dlimno	limno
+D33I07	dlimno	limno
+D33I08	dlimno	limno
+D33I10	dlimno	limno
+D33J01	dlimno	limno
+D34G04	dholo	limno
+D34G05	dmacrops_BD	bigeye	
+D34G06	dmacrops_offshore	bigeye
+D34G07	dmacrops_offshore	bigeye
+D34G09	dmacrops_BD	bigeye
+D34G10	dmacrops_BD	bigeye
