@@ -1,6 +1,3 @@
-[![DOI](https://zenodo.org/badge/DOI/YOUR-DOI-HERE.svg)](https://doi.org/YOUR-DOI-HERE)
-
-
 ## Citation and Data Access
 
 This repository contains the code, small data files, and notebooks associated with the study:  
