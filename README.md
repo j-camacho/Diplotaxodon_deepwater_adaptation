@@ -6,7 +6,7 @@ This repository contains the code, small data files, and notebooks associated wi
 ### Associated Datasets
 
 - **SNP data (VCF, per chromosome)**: [Zenodo DOI for VCF dataset](10.5281/zenodo.15576996)
-- **Code and small data files (this repo)**: [Zenodo DOI for this repository](https://doi.org/...)
+- **Code and small data files (this repo)**: [Zenodo DOI for this repository](10.5281/zenodo.15577694)
 
 ## Description of the data and file structure
 
@@ -62,7 +62,7 @@ For this analysis, the TPS was filtered for 'sequenced == 1' to retain Diplotaxo
 #### Data
 
 * Phenotypes: relative eye size measurements for sequenced Diplotaxodon. These can be derived from Supplementary Data 1 and 3.
-* Genotypes: [Zenodo DOI for VCF dataset](https://doi.org/...)
+* Genotypes: [Zenodo DOI for VCF dataset](10.5281/zenodo.15576996)
 
 #### Workflow:
 
@@ -159,7 +159,7 @@ In preparation for running the selection test scripts (05_\*), the VCF files (**
   * Genomic location
   * Start (bp)
   * End (bp)
-* Raw RNAseq reads are available at [DOI:].
+* Raw RNAseq reads are available at [DOI:TO BE ADDED SHORTLY].
 
 #### Scripts
 * **06_rnaseq_1_fastqc.slm**
