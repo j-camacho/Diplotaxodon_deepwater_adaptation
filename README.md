@@ -1,7 +1,7 @@
 ## Citation and Data Access
 
 This repository contains the code, small data files, and notebooks associated with the study:  
-**"Widespread genetic signals of visual system adaptation in deepwater cichlid fishes" [DOI:]**
+**Camacho Garcia, J.I., Malinsky, M., Joyce, D.A., Santos, E.M., Vernaz, G., Ngochera, M. and Svardal, H. Widespread genetic signals of visual system adaptation in deepwater cichlid fishes.**
 
 ### Associated Datasets
 
