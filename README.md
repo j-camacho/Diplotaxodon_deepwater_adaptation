@@ -1,12 +1,10 @@
-## Citation and Data Access
-
 This repository contains the code, small data files, and notebooks associated with the study:  
 **Camacho Garcia, J.I., Malinsky, M., Joyce, D.A., Santos, E.M., Vernaz, G., Ngochera, M. and Svardal, H. Widespread genetic signals of visual system adaptation in deepwater cichlid fishes.**
 
 ### Associated Datasets
 
-- **SNP data (VCF, per chromosome)**: [Zenodo DOI for VCF dataset](10.5281/zenodo.15576996)
-- **Code and small data files (this repo)**: [Zenodo DOI for this repository](10.5281/zenodo.15577694)
+- **SNP data (VCF, per chromosome)**: [Zenodo DOI for VCF dataset](https://doi.org/10.5281/zenodo.15576996)
+- **Code and small data files (this repo)**: [Zenodo DOI for this repository](https://doi.org/10.5281/zenodo.15577694)
 
 ## Description of the data and file structure
 
@@ -62,7 +60,7 @@ For this analysis, the TPS was filtered for 'sequenced == 1' to retain Diplotaxo
 #### Data
 
 * Phenotypes: relative eye size measurements for sequenced Diplotaxodon. These can be derived from Supplementary Data 1 and 3.
-* Genotypes: [Zenodo DOI for VCF dataset](10.5281/zenodo.15576996)
+* Genotypes: [Zenodo DOI for VCF dataset](https://doi.org/10.5281/zenodo.15576996)
 
 #### Workflow:
 
@@ -110,7 +108,8 @@ For this analysis, the TPS was filtered for 'sequenced == 1' to retain Diplotaxo
    `snpEff -Xmx16g fAstCal1.2.99 {VCF} > {VCF_ann}`
 2. All genes in the annotated GWAS callset were extracted using:
    `SnpSift extractFields -s ',' {VCF_ann} "ANN[*].GENE" "ANN[*].GENEID" "ANN[*].BIOTYPE" > outfile.txt`
-   The unique gene IDs from the first column were saved as "03_GO_genes_GWAS_callset_ENSEMBL-genenames.txt" and used as _gene universe_ for the enrichment test.
+
+3. Unique gene IDs from the first column were saved as "03_GO_genes_GWAS_callset_ENSEMBL-genenames.txt" and used as _gene universe_ for the enrichment test.
 4. Using the BioMart gene table provided, a list of _test genes_ was generated, including genes with TSS within 25 kb of GWA outlier SNPs. This list is available as "03_GO_genes_top001pct_25kbrange_ENSEMBL-genenames.txt". Genomic position of GWA outlier SNPs are provided in Supplementary Data 5. 
 
 ### 4. Overrepresentation of genomic annotations (04\_) and selection tests (05\_)
@@ -134,7 +133,7 @@ For this analysis, the TPS was filtered for 'sequenced == 1' to retain Diplotaxo
   Generates an empirical distribution of extreme XP-EHH scores by sampling random windows across the genome. It takes the output of "05_rehh_xpehh_slurm.R" as input.
 
 #### Workflow
-In preparation for running the selection test scripts (05_\*), the VCF files (**00_VCF/**) need to be subset for samples of the two populations tested: _D_. 'bigeye black dorsal' and _D. limnothrissa_. Sample IDs of these species can be found in Supplementary Data 3 under 'sequence_id'.
+In preparation for running the selection test scripts (05_\*), the VCF files need to be subset for samples of the two populations tested: _D_. 'bigeye black dorsal' and _D. limnothrissa_. Sample IDs of these species can be found in Supplementary Data 3 under 'sequence_id'.
   
   Note: The scripts provided are formatted to be run by SLURM and take arguments from the submission script (**\*.slm**). The R scripts can be run this way by a SLURM-managed cluster or alternatively: 1) R scripts can be modified to include definitions of file paths and parameters, 2) Variables can be specifed as command-line arguments (e.g., `Rscript 05_rehh_xpehh_slurm.R <pop1> <pop2> <outdir> <chrom> <vcf_file_pop1> <vcf_file_pop2>`).
 
