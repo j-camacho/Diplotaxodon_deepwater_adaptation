@@ -18,7 +18,7 @@ Files and code (scripts/notebooks) are organized into:
 
 Files names use a numeric prefix system (e.g., 01_, 02_, etc.) to group related files by analysis. This prefix is consistent across data files, scripts, and notebooks for each analysis and the numbering sequence generally follows the order in which analyses appear in the manuscript.
 
-Description of the files, organized by analysis:
+
 
 ### 1. Eye size Malawi cichlid radiation (01\_, 02\_)
 
@@ -158,7 +158,7 @@ In preparation for running the selection test scripts (05_\*), the VCF files nee
   * Genomic location
   * Start (bp)
   * End (bp)
-* Raw RNAseq reads are available at [DOI:TO BE ADDED SHORTLY].
+* Raw RNAseq reads are available from NCBI under BioProject accession number PRJNA1271605.
 
 #### Scripts
 * **06_rnaseq_1_fastqc.slm**
@@ -195,7 +195,7 @@ The scripts are provided as templates that can be run sequentially to generate a
 ```text
 path_to_dir/
 ├── metadata/             # See Supplementary Data 4
-├── raw_data/             # Raw FASTQ files (available from XXX)
+├── raw_data/             # Raw FASTQ files 
 ├── fastqc/               # Output directory for FastQC results
 ├── STAR/
 │   ├── 06_fAstCal1.2/    # Reference genome and GTF
