@@ -4,7 +4,7 @@ This repository contains the code, small data files, and notebooks associated wi
 ### Associated Datasets
 
 - **SNP data (VCF, per chromosome)**: [Zenodo DOI for VCF dataset](https://doi.org/10.5281/zenodo.15576996)
-- **Code and small data files (this repo)**: [Zenodo DOI for this repository](https://doi.org/10.5281/zenodo.15577694)
+- **Code and small data files (this repo)**: [Zenodo DOI for this repository](https://doi.org/10.5281/zenodo.15602855)
 
 ## Description of the data and file structure
 
