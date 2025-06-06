@@ -1,5 +1,5 @@
 This repository contains the code, small data files, and notebooks associated with the study:  
-**Camacho Garcia, J.I., Malinsky, M., Joyce, D.A., Santos, E.M., Vernaz, G., Ngochera, M. and Svardal, H. Widespread genetic signals of visual system adaptation in deepwater cichlid fishes.**
+**Camacho Garcia, J.I., Malinsky, M., Joyce, D.A., Santos, E.M., Vernaz, G., Ngochera, M. and Svardal, H. Widespread genetic signals of visual system adaptation in deepwater cichlid fishes** [https://doi.org/10.1093/molbev/msaf147]
 
 ### Associated Datasets
 
